@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body {
+	margin: 0;
+	padding: 0;
+}
+#box {
+	width: 400px;
+	height: 300px;
+	margin: 50px auto;
+	background: url(bg.jpg) no-repeat;
+	position: relative;
+}
+#box_father {
+	width: 376px;
+	height: 276px;
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	background: #09C;
+	border: 2px solid #FFF;
+}
+p {
+	text-indent: 2em;
+}
+span {
+	color: #F93
+}
+#tips {
+	border: 2px solid #CCC;
+	background: #0CF;
+	
+	position: absolute;
+	
+}
+</style>
+</head>
+
+<body>
+<div id="box">
+  <div id="box_father">
+    <p>1996年6月，<span>阿纳</span>托利·索布恰克在<span>圣彼得堡市</span>市长选举中失利后，作为索布恰克的得力助手，时任圣彼得堡市第一副市长、并兼任对外关系委员会主席的<span>普京</span>辞去了自己的职务。</p>
+    <p>我在想要怎么办，甚至想过去开出租车。我没有开玩笑，还能怎么办呢。两个孩子都还小。”同年八月，<span>总统</span>事务管理局邀请他到<span>莫斯科</span>工作，普京说他不能不<span>接受</span>，因为他当时没有其他选择，“所以有人邀请我去莫斯科，在总统<span>事务</span>管理局处理一些法务事情，我就<span>同意</span>了。</p>
+    <div id="tips"> 我想要怎么办，甚至想过去开出租车。我没有开玩笑，还能怎么办呢。两个孩子都还小。 </div>
+  </div>
+</div>
+</body>
+</html>
+<script>
+	var box_father = document.getElementById('box_father');
+	var tips = document.getElementById('tips');
+	var span = document.getElementsByTagName('span');
+	var arrLeft=[];
+	var arrTop=[];
+	
+	for(var i=0;i<span.length;i++)
+	{
+		span[i].onmouseover=function(){
+			//alert(this.offsetLeft);
+			//alert(this.offsetTop);
+			if(this.offsetTop<=40)
+			{
+				//在字下一行显示
+				if(this.offsetLeft>188)
+		   		{
+		   			//在左边显示
+					tips.style.left=this.offsetLeft-120 + this.offsetWidth/2 +'px';
+					
+		   		}else{
+			   		//在右边显示
+			   		tips.style.left=this.offsetLeft + this.offsetWidth/2 + 'px';
+		   		}
+				tips.style.top=this.offsetTop+20 +'px';
+				tips.style.width='120px';
+				tips.style.height='auto';
+			}else if( this.offsetTop> 200)
+			{
+				//在字上一行显示
+				if(this.offsetLeft>188)
+		   		{
+		   			//在左边显示
+					tips.style.left=this.offsetLeft- this.offsetWidth/2 +'px';
+					
+		   		}else{
+			   		//在右边显示
+			   		tips.style.left=this.offsetLeft + this.offsetWidth/2 + 'px';
+		   		}
+				tips.style.top=this.offsetTop-100+'px';
+				tips.style.height='100px';
+				tips.style.width='auto';
+			}else
+			{
+				//在字旁边显示
+				if(this.offsetLeft>188)
+		   		{
+		   			//在左边显示
+					tips.style.left=this.offsetLeft-120 +'px';
+					
+		   		}else{
+			   		//在右边显示
+			   		tips.style.left=this.offsetLeft + this.offsetWidth + 'px';
+		   		}
+				tips.style.top=this.offsetTop-50 +'px';
+				tips.style.width='120px';
+				tips.style.height='auto';
+			}
+		   
+		};
+	}
+	
+	
+</script>
